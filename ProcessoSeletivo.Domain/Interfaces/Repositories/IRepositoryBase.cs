@@ -18,8 +18,6 @@ namespace ProcessoSeletivo.Domain.Interfaces.Repositories
 
         TEntity GetById(int id);
 
-        IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);
-
         void Dispose();
     }
 }

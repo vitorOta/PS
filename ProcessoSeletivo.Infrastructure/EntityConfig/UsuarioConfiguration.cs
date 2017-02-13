@@ -17,8 +17,9 @@ namespace ProcessoSeletivo.Infrastructure.EntityConfig
             HasKey(u =>  u.Id );
 
             HasRequired(u => u.Login);
+            HasRequired(u => u.Nome);
 
-            
+
 
         }
     }
