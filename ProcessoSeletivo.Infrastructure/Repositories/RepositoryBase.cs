@@ -21,7 +21,7 @@ namespace ProcessoSeletivo.Infrastructure.Repositories
         }
 
 
-        public IEnumerable<TEntity> GetAll(int id)
+        public IEnumerable<TEntity> GetAll()
         {
             return Db.Set<TEntity>().ToList();
         }

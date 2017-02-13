@@ -14,7 +14,7 @@ namespace ProcessoSeletivo.Domain.Interfaces.Repositories
         void Update(TEntity entity);
         void Remove(TEntity entity);
 
-        IEnumerable<TEntity> GetAll(int id);
+        IEnumerable<TEntity> GetAll();
 
         TEntity GetById(int id);
 

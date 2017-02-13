@@ -23,6 +23,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessoSeletivo.Infrastruc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessoSeletivo.Application", "ProcessoSeletivo.Application\ProcessoSeletivo.Application.csproj", "{0626E16E-1273-4F19-80EE-72F7437A3E39}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{7EBA8EE5-7944-42A0-8499-B8F3FCBE83F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessoSeletivo.Service", "ProcessoSeletivo.Service\ProcessoSeletivo.Service.csproj", "{A3295BB6-8AA3-40AA-9A25-E90FFBB41E18}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,10 @@ Global
 		{0626E16E-1273-4F19-80EE-72F7437A3E39}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0626E16E-1273-4F19-80EE-72F7437A3E39}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0626E16E-1273-4F19-80EE-72F7437A3E39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3295BB6-8AA3-40AA-9A25-E90FFBB41E18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3295BB6-8AA3-40AA-9A25-E90FFBB41E18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3295BB6-8AA3-40AA-9A25-E90FFBB41E18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3295BB6-8AA3-40AA-9A25-E90FFBB41E18}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -56,5 +64,6 @@ Global
 		{32857CF7-40E0-4FC8-BA7C-A4EFCF536B84} = {B8634FD1-6A49-4808-8273-F2C42AB717B5}
 		{F3DA160D-9808-4A09-8389-F39ED6627336} = {32857CF7-40E0-4FC8-BA7C-A4EFCF536B84}
 		{0626E16E-1273-4F19-80EE-72F7437A3E39} = {1E6DF14C-E047-4DC8-A3F4-8B6304708E2D}
+		{A3295BB6-8AA3-40AA-9A25-E90FFBB41E18} = {7EBA8EE5-7944-42A0-8499-B8F3FCBE83F7}
 	EndGlobalSection
 EndGlobal

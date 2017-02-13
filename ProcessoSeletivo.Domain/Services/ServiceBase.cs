@@ -22,9 +22,9 @@ namespace ProcessoSeletivo.Domain.Services
             repository.Add(obj);
         }
 
-        public IEnumerable<TEntity> GetAll(int id)
+        public IEnumerable<TEntity> GetAll()
         {
-            return repository.GetAll(id);
+            return repository.GetAll();
         }
 
         public TEntity GetById(int id)
