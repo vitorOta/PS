@@ -4,21 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProcessoSeletivo.Domain.Interfaces.Services
+namespace ProcessoSeletivo.Application.Interfaces
 {
-    public interface IServiceBase<TEntity> where TEntity : class
+    public interface IAppServiceBase<TEntity> where TEntity : class
     {
-        void Add(TEntity obj);
+        void Add(TEntity entity);
 
         TEntity GetById(int id);
 
         IEnumerable<TEntity> GetAll();
 
-        void Update(TEntity obj);
+        void Update(TEntity entity);
 
-        void Remove(TEntity obj);
+        void Remove(TEntity entity);
 
         void Dispose();
-
     }
 }
