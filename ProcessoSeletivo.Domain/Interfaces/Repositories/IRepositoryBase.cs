@@ -12,7 +12,14 @@ namespace ProcessoSeletivo.Domain.Interfaces.Repositories
     {
         void Add(TEntity entity);
         void Update(TEntity entity);
-        void Delete(TEntity entity);
+        void Remove(TEntity entity);
+
+        IEnumerable<TEntity> GetAll(int id);
+
+        TEntity GetById(int id);
+
         IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);
+
+        void Dispose();
     }
 }
