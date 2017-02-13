@@ -45,7 +45,7 @@ BEGIN
 	SET @email = RIGHT(@row, @right-1)
 	SET @row = LTRIM(SUBSTRING(@row,@left,LEN(@row)))
 	SET @right = CHARINDEX(' ', REVERSE(@row))
-	SET @nome = LEFT(@row,LEN(@row)-@right)
+	SET @nome = RTRIM(LEFT(@row,LEN(@row)-@right))
 	
 	--confiando no índice do login
 	BEGIN TRY
