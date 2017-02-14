@@ -20,6 +20,13 @@ AS
 GO
 
 --------------------------------------------------------------------------------------------------------
+/*Procedure List Usuarios*/
+CREATE PROCEDURE LIST_USUARIOS
+AS 
+	SELECT * FROM USUARIO
+GO
+
+--------------------------------------------------------------------------------------------------------
 /*Procedure read Usuario*/
 CREATE PROCEDURE READ_USUARIO @id INT
 AS 
