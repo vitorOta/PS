@@ -14,7 +14,7 @@ namespace ProcessoSeletivo.Infrastructure.Repositories
     {
         protected ProcessoSeletivoContext Db = new ProcessoSeletivoContext();
 
-        public void Add(TEntity entity)
+        public virtual void Add(TEntity entity)
         {
             Db.Set<TEntity>().Add(entity);
             Db.SaveChanges();

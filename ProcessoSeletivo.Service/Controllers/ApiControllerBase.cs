@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Http;
 
@@ -44,6 +45,18 @@ namespace ProcessoSeletivo.Service.Controllers
         public void Remove(TEntity entity)
         {
             appService.Remove(entity);
+        }
+
+        [HttpDelete]
+        public void Remove(int id)
+        {
+            var e = appService.GetById(id);
+            if (e == null)
+            {
+                throw new HttpResponseException(HttpStatusCode.BadRequest);
+            }
+
+            appService.Remove(e);
         }
 
 

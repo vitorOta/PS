@@ -12,7 +12,7 @@ namespace ProcessoSeletivo.Infrastructure.DbContext
 {
     public class ProcessoSeletivoContext : System.Data.Entity.DbContext
     {
-        public ProcessoSeletivoContext() : base("ProcessoSeletivoContext")/*mudar e jogar no webconfig do appCliente*/
+        public ProcessoSeletivoContext() : base(@"Data Source=(localdb)\v11.0;Initial Catalog=ProcessoDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False")
         {
 
         }

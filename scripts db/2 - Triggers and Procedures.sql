@@ -53,7 +53,7 @@ CREATE PROCEDURE IMPORTAR_TXT @path varchar(max)
 AS
 
 SET NOCOUNT ON
-DROP TABLE IF EXISTS #T 
+--DROP TABLE IF EXISTS #T 
 
 SELECT CAST('' AS VARCHAR(MAX)) a INTO #T
 
@@ -98,13 +98,21 @@ BEGIN
 	SET @right = CHARINDEX(' ', REVERSE(@row))
 	SET @nome = RTRIM(LEFT(@row,LEN(@row)-@right))
 	
-	--confiando no índice do login
+
+   IF((SELECT COUNT(*) FROM USUARIO WHERE LOGIN = @login)=0)
+    BEGIN
+        INSERT INTO Usuario(login, nome, email) VALUES(@login,@nome, @email)
+    END
+    ELSE
+        UPDATE Usuario SET nome=@nome, email = @email WHERE login = @login
+	
+    /*--confiando no índice do login -- não rola, se algum campo der biziu não vou saber;
 	BEGIN TRY
 	INSERT INTO Usuario(login, nome, email) VALUES(@login,@nome, @email)
 	END TRY
 	BEGIN CATCH
 	UPDATE Usuario SET nome=@nome, email = @email WHERE login = @login
-	END CATCH
+	END CATCH*/
 	
 
 
@@ -114,4 +122,6 @@ END
 
 CLOSE mCursor
 DEALLOCATE mCursor
+
+DROP TABLE #T
 GO

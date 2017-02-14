@@ -12,9 +12,9 @@ namespace ProcessoSeletivo.Infrastructure.EntityConfig
     {
         public UsuarioConfiguration()
         {
-            ToTable("Usuario");
+            ToTable("USUARIO");
 
-            Property(e => e.Id).HasColumnName("ID_USUARIO");
+            Property(e => e.Id).HasColumnName("ID_USUARIO").HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
 
             Property(e => e.Login).HasColumnName("LOGIN").IsRequired();
             Property(e => e.Nome).HasColumnName("NOME").IsRequired();

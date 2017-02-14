@@ -10,5 +10,10 @@ namespace ProcessoSeletivo.Infrastructure.Repositories
 {
     public class UsuarioRepository :RepositoryBase<Usuario>, IUsuarioRepository
     {
+        public override void Add(Usuario entity)
+        {
+            entity.DtInclusao = DateTime.Now;
+            base.Add(entity);
+        }
     }
 }

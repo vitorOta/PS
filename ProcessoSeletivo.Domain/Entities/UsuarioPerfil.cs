@@ -17,5 +17,10 @@ namespace ProcessoSeletivo.Domain.Entities
 
         public virtual Perfil Perfil { get; set; }
 
+
+        public UsuarioPerfil()
+        {
+            Ativo = true;
+        }
     }
 }

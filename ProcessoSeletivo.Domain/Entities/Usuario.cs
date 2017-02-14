@@ -24,5 +24,11 @@ namespace ProcessoSeletivo.Domain.Entities
         public virtual ICollection<UsuarioPerfil> Perfis { get; set; }
 
         public virtual ICollection<OperacaoUsuario> Operacoes { get; set; }
+
+        public Usuario()
+        {
+            Ativo = true;
+        }
+
     }
 }
