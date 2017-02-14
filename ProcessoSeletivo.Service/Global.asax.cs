@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Mvc;
+﻿
+using SimpleInjector;
 using System.Web.Http;
-using System.Web.Http.Dependencies;
-using System.Web.Routing;
+using System.Web.Mvc;
 
 namespace ProcessoSeletivo.Service
 {
@@ -12,7 +9,15 @@ namespace ProcessoSeletivo.Service
     {
         protected void Application_Start()
         {
-            DependencyResolver.SetResolver();
+            var container = new Container();
+            container.RegisterCollection(
+                ProcessoSeletivo.Infrastructure.IoC.Domain.SimpleInjectorContainer.RegisterServices(),
+                ProcessoSeletivo.Infrastructure.IoC.Application.SimpleInjectorContainer.RegisterServices());
+
+            //container.Verify();
+
+
+            DependencyResolver.SetResolver(container);
             GlobalConfiguration.Configure(WebApiConfig.Register);
             
         }

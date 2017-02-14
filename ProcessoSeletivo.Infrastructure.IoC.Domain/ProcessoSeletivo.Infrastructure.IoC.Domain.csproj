@@ -48,10 +48,6 @@
     <Compile Include="SimpleInjectorContainer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ProcessoSeletivo.Application\ProcessoSeletivo.Application.csproj">
-      <Project>{0626E16E-1273-4F19-80EE-72F7437A3E39}</Project>
-      <Name>ProcessoSeletivo.Application</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ProcessoSeletivo.Domain\ProcessoSeletivo.Domain.csproj">
       <Project>{F81A41C6-E8A9-47F0-9A56-CD667A2CB933}</Project>
       <Name>ProcessoSeletivo.Domain</Name>

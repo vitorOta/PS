@@ -52,14 +52,6 @@
       <Project>{0626e16e-1273-4f19-80ee-72f7437a3e39}</Project>
       <Name>ProcessoSeletivo.Application</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ProcessoSeletivo.Domain\ProcessoSeletivo.Domain.csproj">
-      <Project>{F81A41C6-E8A9-47F0-9A56-CD667A2CB933}</Project>
-      <Name>ProcessoSeletivo.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ProcessoSeletivo.Infrastructure\ProcessoSeletivo.Infrastructure.Data.csproj">
-      <Project>{B2CB940A-1B04-485C-8AEF-4A80D304CF8C}</Project>
-      <Name>ProcessoSeletivo.Infrastructure.Data</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

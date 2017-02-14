@@ -1,11 +1,9 @@
-﻿using ProcessoSeletivo.Application.AppServices;
-using ProcessoSeletivo.Application.Interfaces;
+﻿using ProcessoSeletivo.Domain.Interfaces.Repositories;
+using ProcessoSeletivo.Domain.Interfaces.Services;
+using ProcessoSeletivo.Domain.Services;
+using ProcessoSeletivo.Infrastructure.Repositories;
 using SimpleInjector;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SimpleInjector.Diagnostics;
 
 namespace ProcessoSeletivo.Infrastructure.IoC.Domain
 {
@@ -14,10 +12,17 @@ namespace ProcessoSeletivo.Infrastructure.IoC.Domain
         public static Container RegisterServices()
         {
             var container = new Container();
-            container.Register<IUsuarioAppService, UsuarioAppService>();
-            container.Register<IPerfilAppService, PerfilAppService>();
 
-            container.Verify();
+
+            
+            container.Register<IUsuarioService, UsuarioService>();
+            container.Register<IUsuarioRepository, UsuarioRepository>();
+
+
+            container.Register<IPerfilService, PerfilService>();
+            container.Register<IPerfilRepository, PerfilRepository>();
+
+            //container.Verify();
             return container;
         }
     }
