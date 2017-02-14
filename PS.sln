@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessoSeletivo.Service", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessoSeletivo.Infrastructure.IoC", "ProcessoSeletivo.Infrastructure.IoC.Application\ProcessoSeletivo.Infrastructure.IoC.csproj", "{EBB93BEA-3157-4D6A-9ACF-882D9E105C37}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessoSeletivo.Presentation.MVC", "ProcessoSeletivo.Presentation.MVC\ProcessoSeletivo.Presentation.MVC.csproj", "{46854A3F-0186-4360-BDCB-90B2D333A362}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,10 @@ Global
 		{EBB93BEA-3157-4D6A-9ACF-882D9E105C37}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EBB93BEA-3157-4D6A-9ACF-882D9E105C37}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EBB93BEA-3157-4D6A-9ACF-882D9E105C37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46854A3F-0186-4360-BDCB-90B2D333A362}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46854A3F-0186-4360-BDCB-90B2D333A362}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46854A3F-0186-4360-BDCB-90B2D333A362}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46854A3F-0186-4360-BDCB-90B2D333A362}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -65,5 +71,6 @@ Global
 		{0626E16E-1273-4F19-80EE-72F7437A3E39} = {1E6DF14C-E047-4DC8-A3F4-8B6304708E2D}
 		{A3295BB6-8AA3-40AA-9A25-E90FFBB41E18} = {7EBA8EE5-7944-42A0-8499-B8F3FCBE83F7}
 		{EBB93BEA-3157-4D6A-9ACF-882D9E105C37} = {32857CF7-40E0-4FC8-BA7C-A4EFCF536B84}
+		{46854A3F-0186-4360-BDCB-90B2D333A362} = {3BD6B6AA-9D00-455D-99E7-6D83309D5414}
 	EndGlobalSection
 EndGlobal
