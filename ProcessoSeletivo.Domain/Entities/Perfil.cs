@@ -14,6 +14,6 @@ namespace ProcessoSeletivo.Domain.Entities
 
         public bool Ativo { get; set; }
 
-        public virtual List<Usuario> Usuarios { get; set; }
+        public virtual ICollection<UsuarioPerfil> Usuarios { get; set; }
     }
 }

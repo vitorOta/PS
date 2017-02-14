@@ -1,4 +1,5 @@
-﻿using ProcessoSeletivo.Infrastructure.EntityConfig;
+﻿using ProcessoSeletivo.Domain.Entities;
+using ProcessoSeletivo.Infrastructure.EntityConfig;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -22,20 +23,21 @@ namespace ProcessoSeletivo.Infrastructure.DbContext
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
 
-
             modelBuilder.Properties()
                 .Where(p=>p.Name=="Id")
-                .Configure(c=>c.IsKey());
+                .Configure(p=>p.IsKey());
 
             modelBuilder.Properties<string>()
-                .Configure(c =>
+                .Configure(p =>
                 {
-                    c.HasColumnType("varchar");
-                    c.HasMaxLength(100);
+                    p.HasColumnType("varchar");
+                    p.HasMaxLength(100);
                 });
 
             modelBuilder.Configurations.Add(new UsuarioConfiguration());
             modelBuilder.Configurations.Add(new PerfilConfiguration());
+            modelBuilder.Configurations.Add(new UsuarioPerfilConfiguration());
+            modelBuilder.Configurations.Add(new OperacaoUsuarioConfiguration());
         }
 
     }

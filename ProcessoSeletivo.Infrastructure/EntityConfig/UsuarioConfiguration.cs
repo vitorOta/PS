@@ -16,10 +16,14 @@ namespace ProcessoSeletivo.Infrastructure.EntityConfig
 
             Property(e => e.Id).HasColumnName("ID_USUARIO");
 
-            Property(e => e.Login).IsRequired();
-            Property(e => e.Nome).IsRequired();
+            Property(e => e.Login).HasColumnName("LOGIN").IsRequired();
+            Property(e => e.Nome).HasColumnName("NOME").IsRequired();
+            Property(e => e.Email).HasColumnName("EMAIL").IsRequired();
 
+            Property(e => e.Senha).HasColumnName("SENHA");
 
+            Property(e => e.DtInclusao).HasColumnName("DT_INCLUSAO");
+            Property(e => e.Ativo).HasColumnName("ATIVO");
 
         }
     }

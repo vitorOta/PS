@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Entities\OperacaoUsuario.cs" />
     <Compile Include="Entities\Perfil.cs" />
+    <Compile Include="Entities\UsuarioPerfil.cs" />
     <Compile Include="Interfaces\Repositories\IPerfilRepository.cs" />
     <Compile Include="Interfaces\Repositories\IRepositoryBase.cs" />
     <Compile Include="Interfaces\Repositories\IUsuarioRepository.cs" />
