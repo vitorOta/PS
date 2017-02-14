@@ -52,6 +52,7 @@
     <Compile Include="DbContext\ProcessoSeletivoContext.cs" />
     <Compile Include="EntityConfig\PerfilConfiguration.cs" />
     <Compile Include="EntityConfig\UsuarioConfiguration.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\PerfilRepository.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />

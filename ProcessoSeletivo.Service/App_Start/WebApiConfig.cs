@@ -10,9 +10,13 @@ namespace ProcessoSeletivo.Service
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
+            config.Formatters.Remove(config.Formatters.XmlFormatter);
+
 
             // Web API routes
             config.MapHttpAttributeRoutes();
+
+            config.Routes.MapHttpRoute("GetAllRoute","api/{controller}/GetAll");
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

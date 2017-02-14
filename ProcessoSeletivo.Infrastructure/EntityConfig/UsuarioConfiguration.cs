@@ -14,10 +14,10 @@ namespace ProcessoSeletivo.Infrastructure.EntityConfig
         {
             ToTable("Usuario");
 
-            HasKey(u =>  u.Id );
+            Property(e => e.Id).HasColumnName("ID_USUARIO");
 
-            HasRequired(u => u.Login);
-            HasRequired(u => u.Nome);
+            Property(e => e.Login).IsRequired();
+            Property(e => e.Nome).IsRequired();
 
 
 

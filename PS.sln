@@ -3,31 +3,29 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{59EF423D-36F6-42F8-8AC8-E35CF8336CDB}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-Domain", "3-Domain", "{59EF423D-36F6-42F8-8AC8-E35CF8336CDB}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{3BD6B6AA-9D00-455D-99E7-6D83309D5414}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0-Presentation", "0-Presentation", "{3BD6B6AA-9D00-455D-99E7-6D83309D5414}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{B8634FD1-6A49-4808-8273-F2C42AB717B5}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4-Infrastructure", "4-Infrastructure", "{B8634FD1-6A49-4808-8273-F2C42AB717B5}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{1E6DF14C-E047-4DC8-A3F4-8B6304708E2D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-Application", "1-Application", "{1E6DF14C-E047-4DC8-A3F4-8B6304708E2D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessoSeletivo.Domain", "ProcessoSeletivo.Domain\ProcessoSeletivo.Domain.csproj", "{F81A41C6-E8A9-47F0-9A56-CD667A2CB933}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessoSeletivo.Infrastructure.Data", "ProcessoSeletivo.Infrastructure\ProcessoSeletivo.Infrastructure.Data.csproj", "{B2CB940A-1B04-485C-8AEF-4A80D304CF8C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{058E3926-FDAE-4B13-984B-130BA1F0ECBC}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1-Data", "4.1-Data", "{058E3926-FDAE-4B13-984B-130BA1F0ECBC}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IoC", "IoC", "{32857CF7-40E0-4FC8-BA7C-A4EFCF536B84}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2-IoC", "4.2-IoC", "{32857CF7-40E0-4FC8-BA7C-A4EFCF536B84}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessoSeletivo.Application", "ProcessoSeletivo.Application\ProcessoSeletivo.Application.csproj", "{0626E16E-1273-4F19-80EE-72F7437A3E39}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{7EBA8EE5-7944-42A0-8499-B8F3FCBE83F7}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Service", "2-Service", "{7EBA8EE5-7944-42A0-8499-B8F3FCBE83F7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessoSeletivo.Service", "ProcessoSeletivo.Service\ProcessoSeletivo.Service.csproj", "{A3295BB6-8AA3-40AA-9A25-E90FFBB41E18}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessoSeletivo.Infrastructure.IoC.Application", "ProcessoSeletivo.Infrastructure.IoC.Application\ProcessoSeletivo.Infrastructure.IoC.Application.csproj", "{EBB93BEA-3157-4D6A-9ACF-882D9E105C37}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessoSeletivo.Infrastructure.IoC.Domain", "ProcessoSeletivo.Infrastructure.IoC.Domain\ProcessoSeletivo.Infrastructure.IoC.Domain.csproj", "{F3DA160D-9808-4A09-8389-F39ED6627336}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessoSeletivo.Infrastructure.IoC", "ProcessoSeletivo.Infrastructure.IoC.Application\ProcessoSeletivo.Infrastructure.IoC.csproj", "{EBB93BEA-3157-4D6A-9ACF-882D9E105C37}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,10 +53,6 @@ Global
 		{EBB93BEA-3157-4D6A-9ACF-882D9E105C37}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EBB93BEA-3157-4D6A-9ACF-882D9E105C37}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EBB93BEA-3157-4D6A-9ACF-882D9E105C37}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F3DA160D-9808-4A09-8389-F39ED6627336}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F3DA160D-9808-4A09-8389-F39ED6627336}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F3DA160D-9808-4A09-8389-F39ED6627336}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F3DA160D-9808-4A09-8389-F39ED6627336}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -71,6 +65,5 @@ Global
 		{0626E16E-1273-4F19-80EE-72F7437A3E39} = {1E6DF14C-E047-4DC8-A3F4-8B6304708E2D}
 		{A3295BB6-8AA3-40AA-9A25-E90FFBB41E18} = {7EBA8EE5-7944-42A0-8499-B8F3FCBE83F7}
 		{EBB93BEA-3157-4D6A-9ACF-882D9E105C37} = {32857CF7-40E0-4FC8-BA7C-A4EFCF536B84}
-		{F3DA160D-9808-4A09-8389-F39ED6627336} = {32857CF7-40E0-4FC8-BA7C-A4EFCF536B84}
 	EndGlobalSection
 EndGlobal

@@ -13,6 +13,7 @@ namespace ProcessoSeletivo.Infrastructure.EntityConfig
         public PerfilConfiguration()
         {
             ToTable("Perfil");
+            Property(e => e.Id).HasColumnName("ID_PERFIL");
         }
 
     }

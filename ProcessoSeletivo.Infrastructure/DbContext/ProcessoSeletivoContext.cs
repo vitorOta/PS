@@ -11,7 +11,7 @@ namespace ProcessoSeletivo.Infrastructure.DbContext
 {
     public class ProcessoSeletivoContext : System.Data.Entity.DbContext
     {
-        public ProcessoSeletivoContext() : base("Data Source=LAPTOP-IL1GS3FI;Initial Catalog=ProcessoDB;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False")/*mudar e jogar no webconfig do appCliente*/
+        public ProcessoSeletivoContext() : base("ProcessoSeletivoContext")/*mudar e jogar no webconfig do appCliente*/
         {
 
         }
@@ -22,6 +22,10 @@ namespace ProcessoSeletivo.Infrastructure.DbContext
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
 
+
+            modelBuilder.Properties()
+                .Where(p=>p.Name=="Id")
+                .Configure(c=>c.IsKey());
 
             modelBuilder.Properties<string>()
                 .Configure(c =>

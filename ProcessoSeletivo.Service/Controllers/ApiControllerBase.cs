@@ -22,6 +22,7 @@ namespace ProcessoSeletivo.Service.Controllers
             return appService.GetAll();
         }
 
+        [HttpGet]
         public TEntity GetById(int id)
         {
             return appService.GetById(id);
