@@ -86,9 +86,8 @@ SELECT LTRIM(RTRIM(a)) FROM #T
 OPEN mCursor
 FETCH NEXT FROM mCURSOR INTO @row
 
-WHILE @@FETCH_STATUS =0
+WHILE @@FETCH_STATUS =0 AND @row  <> ''
 BEGIN
-
 
 	SET @left = CHARINDEX(' ',@row)
 	SET @right = CHARINDEX(' ', REVERSE(@row))
@@ -98,15 +97,15 @@ BEGIN
 	SET @right = CHARINDEX(' ', REVERSE(@row))
 	SET @nome = RTRIM(LEFT(@row,LEN(@row)-@right))
 	
-
-   IF((SELECT COUNT(*) FROM USUARIO WHERE LOGIN = @login)=0)
+	IF((SELECT COUNT(*) FROM USUARIO WHERE LOGIN = @login)=0)
     BEGIN
         INSERT INTO Usuario(login, nome, email) VALUES(@login,@nome, @email)
     END
     ELSE
         UPDATE Usuario SET nome=@nome, email = @email WHERE login = @login
-	
-    /*--confiando no índice do login -- não rola, se algum campo der biziu não vou saber;
+
+
+     /*--confiando no índice do login -- não rola, se algum campo der biziu não vou saber;
 	BEGIN TRY
 	INSERT INTO Usuario(login, nome, email) VALUES(@login,@nome, @email)
 	END TRY

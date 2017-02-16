@@ -23,7 +23,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessoSeletivo.Applicatio
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Service", "2-Service", "{7EBA8EE5-7944-42A0-8499-B8F3FCBE83F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessoSeletivo.Service", "ProcessoSeletivo.Service\ProcessoSeletivo.Service.csproj", "{A3295BB6-8AA3-40AA-9A25-E90FFBB41E18}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessoSeletivo.Service.WebApi", "ProcessoSeletivo.Service\ProcessoSeletivo.Service.WebApi.csproj", "{A3295BB6-8AA3-40AA-9A25-E90FFBB41E18}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessoSeletivo.Infrastructure.IoC", "ProcessoSeletivo.Infrastructure.IoC.Application\ProcessoSeletivo.Infrastructure.IoC.csproj", "{EBB93BEA-3157-4D6A-9ACF-882D9E105C37}"
 EndProject

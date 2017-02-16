@@ -20,7 +20,8 @@ namespace ProcessoSeletivo.Service.Controllers
 
         public IEnumerable<TEntity> GetAll()
         {
-            return appService.GetAll();
+            var list =  appService.GetAll().ToList<TEntity>();
+            return list;
         }
 
         [HttpGet]

@@ -12,7 +12,10 @@ namespace ProcessoSeletivo.Infrastructure.Repositories
     {
         public override void Add(Usuario entity)
         {
-            entity.DtInclusao = DateTime.Now;
+            if (entity != null)
+            {
+                entity.DtInclusao = DateTime.Now;
+            }
             base.Add(entity);
         }
     }

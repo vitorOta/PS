@@ -21,9 +21,9 @@ namespace ProcessoSeletivo.Domain.Entities
 
         public DateTime DtInclusao { get; set; }
 
-        public virtual ICollection<UsuarioPerfil> Perfis { get; set; }
+        public virtual List<UsuarioPerfil> Perfis { get; set; }
 
-        public virtual ICollection<OperacaoUsuario> Operacoes { get; set; }
+        public virtual List<OperacaoUsuario> Operacoes { get; set; }
 
         public Usuario()
         {

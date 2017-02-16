@@ -7,10 +7,8 @@ SET NOCOUNT ON
 
 SELECT CAST('' AS VARCHAR(MAX)) a INTO #T
 
-TRUNCATE TABLE #T
-
 BULK INSERT #T
-FROM 'C:\Users\vitor.ota\Documents\PS\scripts db\ARQUIVO_IMPORTACAO_USUARIO.TXT'--'C:\Users\VitorOta\Documents\Visual Studio 2015\Projects\PS\scripts db\ARQUIVO_IMPORTACAO_USUARIO.txt'
+FROM 'C:\Users\VitorOta\Documents\Visual Studio 2015\Projects\PS\scripts db\ARQUIVO_IMPORTACAO_USUARIO.txt'
 WITH
 (
 FIRSTROW = 2,
@@ -35,7 +33,7 @@ SELECT LTRIM(RTRIM(a)) FROM #T
 OPEN mCursor
 FETCH NEXT FROM mCURSOR INTO @row
 
-WHILE @@FETCH_STATUS =0
+WHILE @@FETCH_STATUS =0 AND @row  <> ''
 BEGIN
 
 	SET @left = CHARINDEX(' ',@row)

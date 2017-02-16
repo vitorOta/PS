@@ -6,6 +6,7 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <script src="https://use.fontawesome.com/6ed1b34b8a.js"></script>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -16,27 +17,79 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("ProcessoSeletivo MVC", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Usuário", "Index", "Usuario")</li>
+                    <li>@Html.ActionLink("Perfil", "Index", "Perfil")</li>
                 </ul>
             </div>
         </div>
     </div>
     <div class="container body-content">
+        <!--static Alert-->
+        <div class="alert" role="alert" id="myAlert" hidden></div>
+
+
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Processo Seletivo</p>
         </footer>
     </div>
 
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalTitle">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalTitle"></h4>
+                </div>
+                <div class="modal-body" id="myModalMessage">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="btnYes">Sim</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--Loading Modal-->
+    <div class="modal fade text-center" id="loadingModal" data-backdrop="static" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content modal-sm">
+                <h4>Aguarde</h4>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                        <span class="sr-only">Aguarde</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    @if (TempData["alert"] != null)
+    {
+        <script>
+            $(document).ready(function () {
+
+                showAlert(@TempData["alert"], @TempData["alertType"]);
+            });
+        </script>
+    }
+
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/ProcessoSeletivo")
     @RenderSection("scripts", required: false)
 </body>
 </html>
