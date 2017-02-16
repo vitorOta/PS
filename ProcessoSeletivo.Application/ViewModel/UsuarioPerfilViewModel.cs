@@ -1,4 +1,4 @@
-﻿using ProcessoSeletivo.Application.ViewModel.Interface;
+﻿using ProcessoSeletivo.Application.ViewModel.Abstract;
 using System.ComponentModel.DataAnnotations;
 
 namespace ProcessoSeletivo.Application.ViewModel

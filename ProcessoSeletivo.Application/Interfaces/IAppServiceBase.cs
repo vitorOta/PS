@@ -1,4 +1,4 @@
-﻿using ProcessoSeletivo.Application.ViewModel.Interface;
+﻿using ProcessoSeletivo.Application.ViewModel.Abstract;
 using System.Collections.Generic;
 
 namespace ProcessoSeletivo.Application.Interfaces

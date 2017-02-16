@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using ProcessoSeletivo.Application.Interfaces;
-using ProcessoSeletivo.Application.ViewModel.Interface;
+using ProcessoSeletivo.Application.ViewModel.Abstract;
 using ProcessoSeletivo.Domain.Interfaces.Services;
 using System;
 using System.Collections.Generic;
@@ -38,7 +38,8 @@ namespace ProcessoSeletivo.Application.AppServices
 
         public void Remove(TViewModel model)
         {
-            service.Remove(Mapper.Map<TViewModel, TEntity>(model));
+            var obj = service.GetById(model.Id);
+            service.Remove(obj);
         }
 
         public void Update(TViewModel model)

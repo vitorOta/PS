@@ -28,13 +28,14 @@ namespace ProcessoSeletivo.Infrastructure.Repositories
 
         public TEntity GetById(int id)
         {
-           return Db.Set<TEntity>().Find(id);
-           
+            return Db.Set<TEntity>().Find(id);
+
         }
 
         public void Remove(TEntity entity)
         {
             Db.Set<TEntity>().Remove(entity);
+
             Db.SaveChanges();
         }
 

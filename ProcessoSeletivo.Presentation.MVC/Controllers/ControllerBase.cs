@@ -1,4 +1,4 @@
-﻿using ProcessoSeletivo.Application.ViewModel.Interface;
+﻿using ProcessoSeletivo.Application.ViewModel.Abstract;
 using RestSharp;
 using System.Collections.Generic;
 using System.Configuration;

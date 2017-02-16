@@ -1,5 +1,5 @@
 ﻿using ProcessoSeletivo.Application.Interfaces;
-using ProcessoSeletivo.Application.ViewModel.Interface;
+using ProcessoSeletivo.Application.ViewModel.Abstract;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
