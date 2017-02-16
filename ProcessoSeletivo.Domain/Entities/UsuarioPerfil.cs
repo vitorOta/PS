@@ -11,16 +11,11 @@ namespace ProcessoSeletivo.Domain.Entities
         public int UsuarioId { get; set; }
         public int PerfilId { get; set; }
 
-        public bool Ativo { get; set; }
+        public bool? Ativo { get; set; }
 
         public virtual Usuario Usuario { get; set; }
 
         public virtual Perfil Perfil { get; set; }
 
-
-        public UsuarioPerfil()
-        {
-            Ativo = true;
-        }
     }
 }

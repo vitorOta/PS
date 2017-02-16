@@ -1,4 +1,6 @@
-﻿using ProcessoSeletivo.Application.Interfaces;
+﻿using AutoMapper;
+using ProcessoSeletivo.Application.Interfaces;
+using ProcessoSeletivo.Application.ViewModel.Interface;
 using ProcessoSeletivo.Domain.Interfaces.Services;
 using System;
 using System.Collections.Generic;
@@ -8,7 +10,9 @@ using System.Threading.Tasks;
 
 namespace ProcessoSeletivo.Application.AppServices
 {
-    public class AppServiceBase<TEntity> : IAppServiceBase<TEntity> where TEntity : class
+    public class AppServiceBase<TViewModel,TEntity> : IAppServiceBase<TViewModel>
+        where TViewModel:IViewModel
+        where TEntity : class
     {
         protected readonly IServiceBase<TEntity> service;
 
@@ -17,29 +21,29 @@ namespace ProcessoSeletivo.Application.AppServices
             this.service = service;
         }
 
-        public void Add(TEntity entity)
+        public void Add(TViewModel model)
         {
-            service.Add(entity);
+            service.Add(Mapper.Map<TViewModel,TEntity>(model));
         }
 
-        public IEnumerable<TEntity> GetAll()
+        public IEnumerable<TViewModel> GetAll()
         {
-            return service.GetAll();
+            return Mapper.Map<IEnumerable<TEntity>, IEnumerable<TViewModel>>(service.GetAll());
         }
 
-        public TEntity GetById(int id)
+        public TViewModel GetById(int id)
         {
-            return service.GetById(id);
+            return Mapper.Map<TEntity, TViewModel>(service.GetById(id));
         }
 
-        public void Remove(TEntity entity)
+        public void Remove(TViewModel model)
         {
-            service.Remove(entity);
+            service.Remove(Mapper.Map<TViewModel, TEntity>(model));
         }
 
-        public void Update(TEntity entity)
+        public void Update(TViewModel model)
         {
-            service.Update(entity);
+            service.Update(Mapper.Map<TViewModel, TEntity>(model));
         }
 
         public void Dispose()

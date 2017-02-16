@@ -1,52 +1,52 @@
 ﻿using ProcessoSeletivo.Application.Interfaces;
-using System;
+using ProcessoSeletivo.Application.ViewModel.Interface;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Http;
 
-namespace ProcessoSeletivo.Service.Controllers
+namespace ProcessoSeletivo.Application.WebApi
 {
-    public class ApiControllerBase<TEntity> : ApiController where TEntity:class
+    public class ApiControllerBase<TViewModel> : ApiController where TViewModel: IViewModel
     {
-        protected readonly IAppServiceBase<TEntity> appService;
+        protected readonly IAppServiceBase<TViewModel> appService;
 
-        public ApiControllerBase(IAppServiceBase<TEntity> appService)
+        public ApiControllerBase(IAppServiceBase<TViewModel> appService)
         {
             this.appService = appService;
         }
 
 
-        public IEnumerable<TEntity> GetAll()
+        public IEnumerable<TViewModel> GetAll()
+
         {
-            var list =  appService.GetAll().ToList<TEntity>();
+            var list =  appService.GetAll().ToList<TViewModel>();
             return list;
         }
 
         [HttpGet]
-        public TEntity GetById(int id)
+        public TViewModel GetById(int id)
         {
             return appService.GetById(id);
         }
 
         [HttpPost]
-        public void Add(TEntity entity)
+        public void Add(TViewModel entity)
         {
             appService.Add(entity);
         }
 
         [HttpPut]
-        public void Update(TEntity entity)
+        public void Update(TViewModel entity)
         {
             appService.Update(entity);
         }
 
-        [HttpDelete]
-        public void Remove(TEntity entity)
-        {
-            appService.Remove(entity);
-        }
+        //[HttpDelete]
+        //public void Remove(TEntity entity)
+        //{
+        //    appService.Remove(entity);
+        //}
 
         [HttpDelete]
         public void Remove(int id)

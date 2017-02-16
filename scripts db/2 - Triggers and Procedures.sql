@@ -89,6 +89,8 @@ FETCH NEXT FROM mCURSOR INTO @row
 WHILE @@FETCH_STATUS =0 AND @row  <> ''
 BEGIN
 
+IF(@row  <> '')
+BEGIN
 	SET @left = CHARINDEX(' ',@row)
 	SET @right = CHARINDEX(' ', REVERSE(@row))
 	SET @login = LEFT(@row, @left-1)
@@ -105,6 +107,7 @@ BEGIN
         UPDATE Usuario SET nome=@nome, email = @email WHERE login = @login
 
 
+
      /*--confiando no índice do login -- não rola, se algum campo der biziu não vou saber;
 	BEGIN TRY
 	INSERT INTO Usuario(login, nome, email) VALUES(@login,@nome, @email)
@@ -112,7 +115,7 @@ BEGIN
 	BEGIN CATCH
 	UPDATE Usuario SET nome=@nome, email = @email WHERE login = @login
 	END CATCH*/
-	
+END	
 
 
 FETCH NEXT FROM mCURSOR INTO @row

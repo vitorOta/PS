@@ -177,6 +177,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Usuario\Index.cshtml" />
     <Content Include="Views\Perfil\Index.cshtml" />
+    <Content Include="Views\Usuario\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -187,6 +188,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ProcessoSeletivo.Application\ProcessoSeletivo.Application.csproj">
+      <Project>{0626E16E-1273-4F19-80EE-72F7437A3E39}</Project>
+      <Name>ProcessoSeletivo.Application</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ProcessoSeletivo.Domain\ProcessoSeletivo.Domain.csproj">
       <Project>{f81a41c6-e8a9-47f0-9a56-cd667a2cb933}</Project>
       <Name>ProcessoSeletivo.Domain</Name>

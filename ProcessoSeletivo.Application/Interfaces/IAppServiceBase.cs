@@ -1,22 +1,20 @@
-﻿using System;
+﻿using ProcessoSeletivo.Application.ViewModel.Interface;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProcessoSeletivo.Application.Interfaces
 {
-    public interface IAppServiceBase<TEntity> where TEntity : class
+    public interface IAppServiceBase<TViewModel>
+        where TViewModel : IViewModel
     {
-        void Add(TEntity entity);
+        void Add(TViewModel entity);
 
-        TEntity GetById(int id);
+        TViewModel GetById(int id);
 
-        IEnumerable<TEntity> GetAll();
+        IEnumerable<TViewModel> GetAll();
 
-        void Update(TEntity entity);
+        void Update(TViewModel entity);
 
-        void Remove(TEntity entity);
+        void Remove(TViewModel entity);
 
         void Dispose();
     }

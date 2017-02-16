@@ -8,7 +8,7 @@ SET NOCOUNT ON
 SELECT CAST('' AS VARCHAR(MAX)) a INTO #T
 
 BULK INSERT #T
-FROM 'C:\Users\VitorOta\Documents\Visual Studio 2015\Projects\PS\scripts db\ARQUIVO_IMPORTACAO_USUARIO.txt'
+FROM 'C:\Users\vitor.ota\Documents\PS\scripts db\ARQUIVO_IMPORTACAO_USUARIO.TXT'
 WITH
 (
 FIRSTROW = 2,
@@ -33,9 +33,12 @@ SELECT LTRIM(RTRIM(a)) FROM #T
 OPEN mCursor
 FETCH NEXT FROM mCURSOR INTO @row
 
-WHILE @@FETCH_STATUS =0 AND @row  <> ''
+WHILE @@FETCH_STATUS = 0
 BEGIN
 
+
+IF(@row  <> '')
+BEGIN
 	SET @left = CHARINDEX(' ',@row)
 	SET @right = CHARINDEX(' ', REVERSE(@row))
 	SET @login = LEFT(@row, @left-1)
@@ -51,7 +54,6 @@ BEGIN
     ELSE
         UPDATE Usuario SET nome=@nome, email = @email WHERE login = @login
 
-
      /*--confiando no índice do login -- não rola, se algum campo der biziu não vou saber;
 	BEGIN TRY
 	INSERT INTO Usuario(login, nome, email) VALUES(@login,@nome, @email)
@@ -59,7 +61,7 @@ BEGIN
 	BEGIN CATCH
 	UPDATE Usuario SET nome=@nome, email = @email WHERE login = @login
 	END CATCH*/
-	
+END	
 
 
 FETCH NEXT FROM mCURSOR INTO @row

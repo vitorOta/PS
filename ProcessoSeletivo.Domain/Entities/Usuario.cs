@@ -17,18 +17,13 @@ namespace ProcessoSeletivo.Domain.Entities
 
         public string Senha { get; set; }
 
-        public bool Ativo { get; set; }
+        public bool? Ativo { get; set; }
 
-        public DateTime DtInclusao { get; set; }
+        public DateTime? DtInclusao { get; set; }
 
         public virtual List<UsuarioPerfil> Perfis { get; set; }
 
         public virtual List<OperacaoUsuario> Operacoes { get; set; }
-
-        public Usuario()
-        {
-            Ativo = true;
-        }
 
     }
 }

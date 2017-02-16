@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="ProcessoSeletivo.Service.WebApiApplication" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="ProcessoSeletivo.Application.WebApi.WebApiApplication" Language="C#" %>

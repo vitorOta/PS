@@ -2,14 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
-namespace ProcessoSeletivo.Service
+namespace ProcessoSeletivo.Application.WebApi
 {
     public static class WebApiConfig
     {
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
+
+            var cors = new EnableCorsAttribute("*", "*", "*");
+            config.EnableCors(cors);
+
             config.Formatters.Remove(config.Formatters.XmlFormatter);
 
 

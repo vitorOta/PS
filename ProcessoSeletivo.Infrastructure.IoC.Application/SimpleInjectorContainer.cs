@@ -19,8 +19,6 @@ namespace ProcessoSeletivo.Infrastructure.IoC
             }
 
 
-            container.Register(typeof(IServiceBase<>), typeof(ServiceBase<>));
-            container.Register(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
 
             container.Register<IUsuarioService, UsuarioService>();
             container.Register<IUsuarioRepository, UsuarioRepository>();
@@ -29,7 +27,6 @@ namespace ProcessoSeletivo.Infrastructure.IoC
             container.Register<IPerfilService, PerfilService>();
             container.Register<IPerfilRepository, PerfilRepository>();
 
-            container.Register(typeof(IAppServiceBase<>),typeof(AppServiceBase<>));
             container.Register<IUsuarioAppService, UsuarioAppService>();
             container.Register<IPerfilAppService, PerfilAppService>();
 

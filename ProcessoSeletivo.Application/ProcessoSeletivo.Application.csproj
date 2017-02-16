@@ -30,7 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=5.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.5.2.0\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -43,10 +48,17 @@
     <Compile Include="AppServices\AppServiceBase.cs" />
     <Compile Include="AppServices\PerfilAppService.cs" />
     <Compile Include="AppServices\UsuarioAppService.cs" />
+    <Compile Include="AutoMapper\AutoMapperConfig.cs" />
+    <Compile Include="AutoMapper\DomainToViewModelMappingProfile.cs" />
+    <Compile Include="AutoMapper\ViewModelToDomainMappingProfile.cs" />
     <Compile Include="Interfaces\IAppServiceBase.cs" />
     <Compile Include="Interfaces\IPerfilAppService.cs" />
     <Compile Include="Interfaces\IUsuarioAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\Interface\IViewModel.cs" />
+    <Compile Include="ViewModel\PerfilViewModel.cs" />
+    <Compile Include="ViewModel\UsuarioPerfilViewModel.cs" />
+    <Compile Include="ViewModel\UsuarioViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ProcessoSeletivo.Domain\ProcessoSeletivo.Domain.csproj">
@@ -57,6 +69,10 @@
       <Project>{b2cb940a-1b04-485c-8aef-4a80d304cf8c}</Project>
       <Name>ProcessoSeletivo.Infrastructure.Data</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

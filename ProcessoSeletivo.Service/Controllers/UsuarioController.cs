@@ -1,10 +1,9 @@
 ﻿using ProcessoSeletivo.Application.Interfaces;
-using ProcessoSeletivo.Domain.Entities;
-using System.Collections.Generic;
+using ProcessoSeletivo.Application.ViewModel;
 
-namespace ProcessoSeletivo.Service.Controllers
+namespace ProcessoSeletivo.Application.WebApi
 {
-    public class UsuarioController : ApiControllerBase<Usuario>
+    public class UsuarioController : ApiControllerBase<UsuarioViewModel>
     {
         
         public UsuarioController(IUsuarioAppService appService) : base(appService)

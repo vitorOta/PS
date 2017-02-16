@@ -1,15 +1,9 @@
-﻿using ProcessoSeletivo.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-using ProcessoSeletivo.Application.Interfaces;
+﻿using ProcessoSeletivo.Application.Interfaces;
+using ProcessoSeletivo.Application.ViewModel;
 
-namespace ProcessoSeletivo.Service.Controllers
+namespace ProcessoSeletivo.Application.WebApi
 {
-    public class PerfilController : ApiControllerBase<Perfil>
+    public class PerfilController : ApiControllerBase<PerfilViewModel>
     {
         public PerfilController(IPerfilAppService appService) : base(appService)
         {

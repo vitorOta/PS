@@ -1,25 +1,34 @@
-﻿using RestSharp;
-using System;
+﻿using ProcessoSeletivo.Application.ViewModel.Interface;
+using RestSharp;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Web.Mvc;
 
 namespace ProcessoSeletivo.Presentation.MVC.Controllers
 {
-    public class ControllerBase<TEntity> : Controller where TEntity : class
+    public class ControllerBase<TViewModel> : Controller
+        where TViewModel : IViewModel
     {
-        protected string urlBase = ConfigurationManager.AppSettings["WebServiceUrl"] + typeof(TEntity).Name;
+
+
+        protected readonly string urlBase;
         protected readonly RestClient client;
 
         public ControllerBase()
         {
+            
+             urlBase = ConfigurationManager.AppSettings["WebServiceUrl"] + typeof(TViewModel).Name.Replace("ViewModel","");
+
             client = new RestClient(urlBase);
         }
 
         public ActionResult Index()
         {
             var req = new RestRequest("GetAll", Method.GET);
-            var resp = client.Execute<List<TEntity>>(req);
+            var resp = client.Execute<List<TViewModel>>(req);
+
+
+            ViewBag.UrlDelete = urlBase;
             return View(resp.Data);
         }
 
@@ -57,7 +66,7 @@ namespace ProcessoSeletivo.Presentation.MVC.Controllers
             return View();
         }
 
-        [HttpPost]
+        [HttpPut]
         public ActionResult Edit(int id, FormCollection collection)
         {
             try
@@ -73,10 +82,11 @@ namespace ProcessoSeletivo.Presentation.MVC.Controllers
         }
 
 
-        [HttpPost]//[HttpDelete] //config do IIS não reconhece HttpDelete, como não sei como será na hora da avaliação, coloquei como Post
+        [HttpDelete]
         public ActionResult Delete(int id)
         {
-            var req = new RestRequest(Method.DELETE);
+            var req = new RestRequest("{id}",Method.DELETE);
+            req.AddUrlSegment("id", id + "");
             var resp = client.Execute(req);
 
             if (resp.ErrorException != null)
@@ -84,7 +94,7 @@ namespace ProcessoSeletivo.Presentation.MVC.Controllers
                 return HttpNotFound(resp.ErrorMessage);
             }
 
-            return RedirectToAction("Index");
+            return View();
         }
     }
 }

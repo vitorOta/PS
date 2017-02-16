@@ -1,5 +1,9 @@
 ﻿function showConfirmModal(title, message, yesCallback) {
-    $('#myModal #btnYes').click(yesCallback);
+
+
+    var btnYes = $('#myModal #btnYes')
+    btnYes.unbind();
+    btnYes.click(yesCallback);
     $('#myModal #myModalTitle').text(title);
     $('#myModal #myModalMessage').text(message);
     $('#myModal').modal('show');
