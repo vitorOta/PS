@@ -44,7 +44,8 @@ namespace ProcessoSeletivo.Application.AppServices
 
         public void Update(TViewModel model)
         {
-            service.Update(Mapper.Map<TViewModel, TEntity>(model));
+            var obj = service.GetById(model.Id);
+            service.Update(obj);
         }
 
         public void Dispose()

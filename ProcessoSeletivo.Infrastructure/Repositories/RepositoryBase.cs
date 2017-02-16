@@ -35,7 +35,6 @@ namespace ProcessoSeletivo.Infrastructure.Repositories
         public void Remove(TEntity entity)
         {
             Db.Set<TEntity>().Remove(entity);
-
             Db.SaveChanges();
         }
 
