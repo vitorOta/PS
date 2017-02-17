@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace ProcessoSeletivo.Presentation.WebForms.Usuario
+namespace ProcessoSeletivo.Presentation.WebForms.Perfil
 {
     public partial class CreateOrEdit : System.Web.UI.Page
     {
@@ -23,9 +23,6 @@ namespace ProcessoSeletivo.Presentation.WebForms.Usuario
 
 
                 var nome = string.Empty;
-                var login = string.Empty;
-                var email = string.Empty;
-                var senha = string.Empty;
                 var ativo = false;
 
                 if (!string.IsNullOrWhiteSpace(id))
@@ -33,52 +30,43 @@ namespace ProcessoSeletivo.Presentation.WebForms.Usuario
                     //Sono tá muito e o tempo tá pouco, senão criava uma classe/método pra reaproveitar melhor
                     var req = new RestRequest("{id}", Method.GET);
                     req.AddParameter("id", Request.QueryString["Id"]);
-                    var resp = Index.client.Execute<UsuarioViewModel>(req);
+                    var resp = Index.client.Execute<PerfilViewModel>(req);
 
-                    var usuario = resp.Data;
-                    if (usuario != null)
+                    var perfil = resp.Data;
+                    if (perfil != null)
                     {
                         acao = "Editar";
 
-                        nome = usuario.Nome;
-                        email = usuario.Email;
-                        login = usuario.Login;
-                        senha = usuario.Senha;
-                        ativo = usuario.Ativo;
+                        nome = perfil.Nome;
+                        ativo = perfil.Ativo;
                     }
                 }
 
                 LblAcao.Text = acao;
 
-                TxtLogin.Text = login;
                 TxtNome.Text = nome;
-                TxtEmail.Text = email;
-                TxtSenha.Text = senha;
                 ChkAtivo.Checked = ativo;
             }
         }
 
         protected void Salvar(object sender, EventArgs e)
         {
-            var usuario = new UsuarioViewModel();
+            var perfil = new PerfilViewModel();
             bool novo = true;
             if (!string.IsNullOrWhiteSpace(id))
             {
                 var sReq = new RestRequest("{id}", Method.GET);
                 sReq.AddParameter("id", Request.QueryString["Id"]);
-                var sResp = Index.client.Execute<UsuarioViewModel>(sReq);
+                var sResp = Index.client.Execute<PerfilViewModel>(sReq);
 
-                usuario = sResp.Data;
-                novo = usuario == null;
+                perfil = sResp.Data;
+                novo = perfil == null;
             }
-            usuario.Ativo = ChkAtivo.Checked;
-            usuario.Login = TxtLogin.Text;
-            usuario.Nome = TxtNome.Text;
-            usuario.Email = TxtEmail.Text;
-            usuario.Senha = TxtSenha.Text;
+            perfil.Ativo = ChkAtivo.Checked;
+            perfil.Nome = TxtNome.Text;
 
             var req = new RestRequest(novo ? Method.POST : Method.PUT);
-            req.AddJsonBody(usuario);
+            req.AddJsonBody(perfil);
             var resp = Index.client.Execute(req);
 
             Response.Redirect("Index");
