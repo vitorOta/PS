@@ -1,10 +1,10 @@
-﻿using ProcessoSeletivo.Application.ViewModel.Abstract;
+﻿using ProcessoSeletivo.Application.ViewModel;
 using System.Collections.Generic;
 
 namespace ProcessoSeletivo.Application.Interfaces
 {
     public interface IAppServiceBase<TViewModel>
-        where TViewModel : IViewModel
+        where TViewModel : ViewModelBase
     {
         void Add(TViewModel entity);
 

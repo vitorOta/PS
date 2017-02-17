@@ -15,5 +15,17 @@ namespace ProcessoSeletivo.Application.AppServices
         public UsuarioAppService(IUsuarioService service) : base(service)
         {
         }
+
+        public override void Update(UsuarioViewModel model)
+        {
+            var obj = service.GetById(model.Id);
+            obj.Email = model.Email;
+            obj.Ativo = model.Ativo;
+            obj.Login = model.Login;
+            obj.Nome = model.Nome;
+            obj.Senha = model.Senha;
+
+            service.Update(obj);
+        }
     }
 }

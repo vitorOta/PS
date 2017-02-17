@@ -1,16 +1,16 @@
 ﻿@model IEnumerable<UsuarioViewModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Usuários";
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
 <p>
-    @Html.ActionLink("Novo", "Create", null, new { @class = "btn btn-success" })
+    @Html.ActionLink("Novo", "CreateOrEdit", null, new { @class = "btn btn-success" })
 </p>
 <table class="table table-striped">
-    <tr>
+    <thead>
         <th>
             @Html.DisplayNameFor(model => model.Login)
         </th>
@@ -27,7 +27,7 @@
             @Html.DisplayNameFor(model => model.DtInclusao)
         </th>
         <th></th>
-    </tr>
+    </thead>
 
     @if (Model != null)
     {
@@ -51,7 +51,7 @@
                     @Html.DisplayFor(modelItem => item.DtInclusao)
                 </td>
                 <td>
-                    @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn btn-default btn-sm" })
+                    @Html.ActionLink("Editar", "CreateOrEdit", new { id = item.Id }, new { @class = "btn btn-default btn-sm" })
                     @Html.ActionLink("Detalhes", "Details", new { id = item.Id }, new { @class = "btn btn-info btn-sm" })
                     <button onclick='deleteItem(@item.Id)' class="btn btn-danger btn-sm">Excluir</button>
                 </td>

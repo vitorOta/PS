@@ -15,5 +15,14 @@ namespace ProcessoSeletivo.Application.AppServices
         public PerfilAppService(IPerfilService service) : base(service)
         {
         }
+
+        public override void Update(PerfilViewModel model)
+        {
+            var obj = service.GetById(model.Id);
+            obj.Ativo = model.Ativo;
+            obj.Nome = model.Nome;
+            
+            service.Update(obj);
+        }
     }
 }

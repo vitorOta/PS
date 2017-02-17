@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProcessoSeletivo.Application.ViewModel.Abstract
+namespace ProcessoSeletivo.Application.ViewModel
 {
-    public abstract class IViewModel
+    public class ViewModelBase
     {
         public virtual int Id { get; set; }
     }

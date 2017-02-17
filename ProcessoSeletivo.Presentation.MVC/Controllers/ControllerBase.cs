@@ -1,5 +1,6 @@
-﻿using ProcessoSeletivo.Application.ViewModel.Abstract;
+﻿using ProcessoSeletivo.Application.ViewModel;
 using RestSharp;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Web.Mvc;
@@ -7,7 +8,7 @@ using System.Web.Mvc;
 namespace ProcessoSeletivo.Presentation.MVC.Controllers
 {
     public class ControllerBase<TViewModel> : Controller
-        where TViewModel : IViewModel
+        where TViewModel : ViewModelBase, new()
     {
 
 
@@ -35,66 +36,82 @@ namespace ProcessoSeletivo.Presentation.MVC.Controllers
 
         public ActionResult Details(int id)
         {
-            return View();
+            var req = new RestRequest("{id}", Method.GET);
+            req.AddParameter("id", id);
+            var resp = client.Execute<TViewModel>(req);
+            return View(resp.Data);
         }
 
 
-        public ActionResult Create()
+        public ActionResult CreateOrEdit(int? id)
         {
-            return View();
+            TViewModel obj=null;
+
+            if (id != null && id > 0)
+            {
+                var req = new RestRequest("{id}", Method.GET);
+                req.AddParameter("id", id);
+                var resp = client.Execute<TViewModel>(req);
+                if (resp.ErrorException != null)
+                {
+                    AddAlert("Ocorreu um erro:" + resp.ErrorException.Message,"danger");
+                    return RedirectToAction("Index");
+                }
+
+                obj = resp.Data;
+            }else
+            {
+                obj = new TViewModel();
+            }
+            
+
+            return View(obj);
         }
 
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult CreateOrEdit(TViewModel obj)
         {
             try
             {
-                // TODO: Add insert logic here
+                if (!ModelState.IsValid)
+                {
+                    throw new Exception("Algo deu errado...");
+                }
+                Method m;
+                if (obj.Id > 0)
+                {
+                    m = Method.PUT;
+                }
+                else
+                {
+                    m=Method.POST;
+                }
 
+                var req = new RestRequest(m);
+                req.AddJsonBody(obj);
+                var resp = client.Execute(req);
+
+                if (resp.ErrorException != null)
+                {
+                    throw resp.ErrorException;
+                }
+
+                AddAlert("Sucesso !","success");
                 return RedirectToAction("Index");
             }
-            catch
+            catch(Exception e)
             {
-                return View();
+                AddAlert("Ocorreu um erro: " + e.Message,"danger");
+                return View(obj);
             }
         }
 
-
-        public ActionResult Edit(int id)
+        private void AddAlert(string message,string type)
         {
-            return View();
+            TempData.Add("alert", message);
+            TempData.Add("alertType", type);
         }
 
-        [HttpPut]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-
-        [HttpDelete]
-        public ActionResult Delete(int id)
-        {
-            var req = new RestRequest("{id}",Method.DELETE);
-            req.AddUrlSegment("id", id + "");
-            var resp = client.Execute(req);
-
-            if (resp.ErrorException != null)
-            {
-                return HttpNotFound(resp.ErrorMessage);
-            }
-
-            return View();
-        }
     }
 }

@@ -1,9 +1,9 @@
-﻿using ProcessoSeletivo.Application.ViewModel.Abstract;
+﻿using ProcessoSeletivo.Application.ViewModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace ProcessoSeletivo.Application.ViewModel
 {
-    public class UsuarioPerfilViewModel : IViewModel
+    public class UsuarioPerfilViewModel : ViewModelBase
     {
 
         [Key]
@@ -12,7 +12,7 @@ namespace ProcessoSeletivo.Application.ViewModel
         [Key]
         public int PerfilId { get; set; }
 
-        public bool? Ativo { get; set; }
+        public bool Ativo { get; set; }
 
         public virtual UsuarioViewModel Usuario { get; set; }
 

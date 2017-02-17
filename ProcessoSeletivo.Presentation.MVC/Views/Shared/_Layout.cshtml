@@ -17,8 +17,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <i class="fa fa-rebel"></i>
-                @Html.ActionLink(" ProcessoSeletivo MVC", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink(" ProcessoSeletivo MVC", "Index", "Usuario", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -29,14 +28,15 @@
         </div>
     </div>
     <div class="container body-content">
-        <!--static Alert-->
-        <div class="alert" role="alert" id="myAlert" hidden>...</div>
 
 
         @RenderBody()
+
+        <!--static Alert-->
+        <div class="alert" role="alert" id="myAlert" hidden>...</div>
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Processo Seletivo</p>
+            <p>&copy; @DateTime.Now.Year - Processo Seletivo <a href="https://vitorota.github.io/"> <i class="fa fa-rebel"></i></a></p>
         </footer>
     </div>
 
@@ -77,20 +77,20 @@
     </div>
 
 
-    @if (TempData["alert"] != null)
-    {
-        <script>
-            $(document).ready(function () {
-
-                showAlert(@TempData["alert"], @TempData["alertType"]);
-            });
-        </script>
-    }
 
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/ProcessoSeletivo")
     @RenderSection("scripts", required: false)
+
+
+    <script>
+        var i = @(TempData["alert"] != null?1:0);
+        if(i==1){
+            showAlert('@TempData["alert"]', '@TempData["alertType"]');
+        }
+    </script>
+
 </body>
 </html>

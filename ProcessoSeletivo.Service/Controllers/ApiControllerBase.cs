@@ -1,5 +1,5 @@
 ﻿using ProcessoSeletivo.Application.Interfaces;
-using ProcessoSeletivo.Application.ViewModel.Abstract;
+using ProcessoSeletivo.Application.ViewModel;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -7,7 +7,7 @@ using System.Web.Http;
 
 namespace ProcessoSeletivo.Application.WebApi
 {
-    public class ApiControllerBase<TViewModel> : ApiController where TViewModel: IViewModel
+    public class ApiControllerBase<TViewModel> : ApiController where TViewModel: ViewModelBase
     {
         protected readonly IAppServiceBase<TViewModel> appService;
 
@@ -20,7 +20,7 @@ namespace ProcessoSeletivo.Application.WebApi
         public IEnumerable<TViewModel> GetAll()
 
         {
-            var list =  appService.GetAll().ToList<TViewModel>();
+            var list =  appService.GetAll().ToList();
             return list;
         }
 

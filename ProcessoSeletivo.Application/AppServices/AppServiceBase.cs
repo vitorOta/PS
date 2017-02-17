@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using ProcessoSeletivo.Application.Interfaces;
-using ProcessoSeletivo.Application.ViewModel.Abstract;
+using ProcessoSeletivo.Application.ViewModel;
 using ProcessoSeletivo.Domain.Interfaces.Services;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace ProcessoSeletivo.Application.AppServices
 {
     public class AppServiceBase<TViewModel,TEntity> : IAppServiceBase<TViewModel>
-        where TViewModel:IViewModel
+        where TViewModel:ViewModelBase
         where TEntity : class
     {
         protected readonly IServiceBase<TEntity> service;
@@ -42,10 +42,9 @@ namespace ProcessoSeletivo.Application.AppServices
             service.Remove(obj);
         }
 
-        public void Update(TViewModel model)
+        public virtual void Update(TViewModel model)
         {
-            var obj = service.GetById(model.Id);
-            service.Update(obj);
+            throw new NotImplementedException("Implement on child");
         }
 
         public void Dispose()

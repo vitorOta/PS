@@ -1,11 +1,11 @@
-﻿using ProcessoSeletivo.Application.ViewModel.Abstract;
+﻿using ProcessoSeletivo.Application.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace ProcessoSeletivo.Application.ViewModel
 {
-    public class UsuarioViewModel : IViewModel
+    public class UsuarioViewModel : ViewModelBase
     {
 
         [Key]
@@ -24,10 +24,10 @@ namespace ProcessoSeletivo.Application.ViewModel
         [DataType(DataType.Password)]
         public string Senha { get; set; }
 
-        public bool? Ativo { get; set; }
+        public bool Ativo { get; set; }
 
         [Display(Name ="Data de Inclusão")]
-        public DateTime? DtInclusao { get; set; }
+        public DateTime DtInclusao { get; set; }
 
         public virtual List<UsuarioPerfilViewModel> Perfis { get; set; }
     }

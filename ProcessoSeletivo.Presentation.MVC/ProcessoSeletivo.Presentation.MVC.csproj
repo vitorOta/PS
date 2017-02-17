@@ -176,8 +176,11 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Usuario\Index.cshtml" />
+    <Content Include="Views\Usuario\CreateOrEdit.cshtml" />
+    <Content Include="Views\Usuario\Details.cshtml" />
+    <Content Include="Views\Perfil\CreateOrEdit.cshtml" />
+    <Content Include="Views\Perfil\Details.cshtml" />
     <Content Include="Views\Perfil\Index.cshtml" />
-    <Content Include="Views\Usuario\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -189,12 +192,8 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ProcessoSeletivo.Application\ProcessoSeletivo.Application.csproj">
-      <Project>{0626E16E-1273-4F19-80EE-72F7437A3E39}</Project>
+      <Project>{0626e16e-1273-4f19-80ee-72f7437a3e39}</Project>
       <Name>ProcessoSeletivo.Application</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ProcessoSeletivo.Domain\ProcessoSeletivo.Domain.csproj">
-      <Project>{f81a41c6-e8a9-47f0-9a56-cd667a2cb933}</Project>
-      <Name>ProcessoSeletivo.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
