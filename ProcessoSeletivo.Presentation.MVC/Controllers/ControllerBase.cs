@@ -34,7 +34,7 @@ namespace ProcessoSeletivo.Presentation.MVC.Controllers
         }
 
 
-        public ActionResult Details(int id)
+        public virtual ActionResult Details(int id)
         {
             var req = new RestRequest("{id}", Method.GET);
             req.AddParameter("id", id);

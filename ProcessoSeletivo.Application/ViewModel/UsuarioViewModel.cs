@@ -29,6 +29,7 @@ namespace ProcessoSeletivo.Application.ViewModel
         [Display(Name ="Data de Inclusão")]
         public DateTime DtInclusao { get; set; }
 
-        public virtual List<UsuarioPerfilViewModel> Perfis { get; set; }
+        [Display(Name = "Perfis")]
+        public List<UsuarioPerfilViewModel> Perfis { get; set; }
     }
 }

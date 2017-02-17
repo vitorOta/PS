@@ -58,6 +58,17 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.Perfis, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ListBoxFor(model => model.Perfis, new MultiSelectList(Model.Perfis))
+                @Html.ValidationMessageFor(model => model.Perfis, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <h1>TERMINA ISSO AQUI</h1>
+        
+
+
+        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="@ViewBag.Title" class="btn btn-success" />
             </div>

@@ -15,6 +15,6 @@ namespace ProcessoSeletivo.Application.ViewModel
 
         public bool Ativo { get; set; }
 
-        public virtual List<UsuarioPerfilViewModel> Usuarios { get; set; }
+        public List<UsuarioPerfilViewModel> Usuarios { get; set; }
     }
 }
