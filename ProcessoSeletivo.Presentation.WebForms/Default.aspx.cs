@@ -11,7 +11,7 @@ namespace ProcessoSeletivo.Presentation.WebForms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Response.Redirect("Usuario/Index");
         }
     }
 }

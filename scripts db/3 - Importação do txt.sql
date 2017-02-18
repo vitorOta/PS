@@ -8,7 +8,7 @@ SET NOCOUNT ON
 SELECT CAST('' AS VARCHAR(MAX)) a INTO #T
 
 BULK INSERT #T
-FROM 'C:\Users\vitor.ota\Documents\PS\scripts db\ARQUIVO_IMPORTACAO_USUARIO.TXT'--'C:\Users\VitorOta\Documents\Visual Studio 2015\Projects\PS\scripts db\ARQUIVO_IMPORTACAO_USUARIO.TXT'--
+FROM 'C:\Users\VitorOta\Documents\Visual Studio 2015\Projects\PS\scripts db\ARQUIVO_IMPORTACAO_USUARIO.TXT'--'C:\Users\vitor.ota\Documents\PS\scripts db\ARQUIVO_IMPORTACAO_USUARIO.TXT'--
 WITH
 (
 FIRSTROW = 2,

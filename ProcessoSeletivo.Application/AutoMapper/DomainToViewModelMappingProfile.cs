@@ -10,6 +10,7 @@ namespace ProcessoSeletivo.Application.AutoMapper
         {
             CreateMap<Usuario, UsuarioViewModel>();
             CreateMap<Perfil, PerfilViewModel>();
+            CreateMap<UsuarioPerfil, UsuarioPerfilViewModel>();
         }
     }
 }

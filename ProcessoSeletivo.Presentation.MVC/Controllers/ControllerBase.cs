@@ -1,4 +1,5 @@
 ﻿using ProcessoSeletivo.Application.ViewModel;
+using ProcessoSeletivo.Presentation.MVC.Util;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -12,89 +13,67 @@ namespace ProcessoSeletivo.Presentation.MVC.Controllers
     {
 
 
-        protected readonly string urlBase;
-        protected readonly RestClient client;
+        
+        protected readonly RestConsumer<TViewModel> consumer = new RestConsumer<TViewModel>();
 
         public ControllerBase()
         {
             
-             urlBase = ConfigurationManager.AppSettings["WebServiceUrl"] + typeof(TViewModel).Name.Replace("ViewModel","");
-
-            client = new RestClient(urlBase);
         }
 
         public ActionResult Index()
         {
-            var req = new RestRequest("GetAll", Method.GET);
-            var resp = client.Execute<List<TViewModel>>(req);
-
-
-            ViewBag.UrlDelete = urlBase;
-            return View(resp.Data);
+            ViewBag.UrlDelete = consumer.baseUrl;
+            return View(consumer.GetAll());
         }
 
 
-        public virtual ActionResult Details(int id)
+        public ActionResult Details(int id)
         {
-            var req = new RestRequest("{id}", Method.GET);
-            req.AddParameter("id", id);
-            var resp = client.Execute<TViewModel>(req);
-            return View(resp.Data);
+            return View(consumer.GetById(id));
         }
 
 
-        public ActionResult CreateOrEdit(int? id)
+        public virtual ActionResult CreateOrEdit(int? id)
         {
             TViewModel obj=null;
-
-            if (id != null && id > 0)
+            try
             {
-                var req = new RestRequest("{id}", Method.GET);
-                req.AddParameter("id", id);
-                var resp = client.Execute<TViewModel>(req);
-                if (resp.ErrorException != null)
+                //ver id.HasValue
+                if (id != null && id > 0)
                 {
-                    AddAlert("Ocorreu um erro:" + resp.ErrorException.Message,"danger");
-                    return RedirectToAction("Index");
+                    obj = consumer.GetById(id.Value);
                 }
-
-                obj = resp.Data;
-            }else
+                else
+                {
+                    obj = new TViewModel();
+                }
+            }catch(Exception e)
             {
-                obj = new TViewModel();
+                AddAlert("Ocorreu um erro:" + e.Message, "danger");
+                return RedirectToAction("Index");
             }
-            
 
             return View(obj);
         }
 
-
         [HttpPost]
-        public ActionResult CreateOrEdit(TViewModel obj)
+        public virtual ActionResult CreateOrEdit(TViewModel obj)
         {
             try
             {
                 if (!ModelState.IsValid)
                 {
-                    throw new Exception("Algo deu errado...");
+                    throw new Exception("Algo não está certo...");
                 }
-                Method m;
+                
                 if (obj.Id > 0)
                 {
-                    m = Method.PUT;
+                    consumer.Update(obj);
                 }
                 else
                 {
-                    m=Method.POST;
-                }
-
-                var req = new RestRequest(m);
-                req.AddJsonBody(obj);
-                var resp = client.Execute(req);
-
-                if (resp.ErrorException != null)
-                {
-                    throw resp.ErrorException;
+                    consumer.Add(obj);
                 }
 
                 AddAlert("Sucesso !","success");
@@ -103,15 +82,19 @@ namespace ProcessoSeletivo.Presentation.MVC.Controllers
             catch(Exception e)
             {
                 AddAlert("Ocorreu um erro: " + e.Message,"danger");
-                return View(obj);
+                return RedirectToAction("CreateOrEdit",new {obj.Id });
             }
         }
 
-        private void AddAlert(string message,string type)
+        protected void AddAlert(string message,string type)
         {
             TempData.Add("alert", message);
             TempData.Add("alertType", type);
         }
+
+
+
+        /*------ métodos para consumir o webservice ---------*/
 
     }
 }

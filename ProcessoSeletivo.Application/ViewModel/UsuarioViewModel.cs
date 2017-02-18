@@ -30,6 +30,6 @@ namespace ProcessoSeletivo.Application.ViewModel
         public DateTime DtInclusao { get; set; }
 
         [Display(Name = "Perfis")]
-        public List<UsuarioPerfilViewModel> Perfis { get; set; }
+        public virtual List<UsuarioPerfilViewModel> Perfis { get; set; }
     }
 }

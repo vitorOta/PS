@@ -57,7 +57,14 @@
         <dd>
             @Html.DisplayFor(model => model.DtInclusao)
         </dd>
+        
+        <dt>
+            Perfis
+        </dt>
 
+        <dd>
+            @Html.ListBoxFor(model => model.Perfis, new SelectList(Model.Perfis.Select(up=>up.Perfil.Nome)), new { @class="col-md-12"})
+        </dd>
     </dl>
 </div>
 <p>

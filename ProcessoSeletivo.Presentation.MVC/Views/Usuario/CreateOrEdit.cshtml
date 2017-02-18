@@ -1,7 +1,7 @@
 ﻿@model UsuarioViewModel
 
 @{
-    ViewBag.Title = Model?.Id>0 ? "Editar" : "Cadastrar";
+    ViewBag.Title = Model?.Id > 0 ? "Editar" : "Cadastrar";
 }
 
 <h2>@ViewBag.Title</h2>
@@ -57,20 +57,29 @@
             </div>
         </div>
 
+
+
         <div class="form-group">
             @Html.LabelFor(model => model.Perfis, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.ListBoxFor(model => model.Perfis, new MultiSelectList(Model.Perfis))
-                @Html.ValidationMessageFor(model => model.Perfis, "", new { @class = "text-danger" })
+
+            <div class="col-md-10 form-inline">
+                @Html.ListBox("perfisAdicionados", new SelectList(Model.Perfis?.Select(m => m.Perfil).ToList() ?? new List<PerfilViewModel>(), "Id", "Nome"), new { @class = "col-md-4 form-control", size = 5, style = "width:150px" })
+
+                <button type="button" class="btn btn-warning form-control" onclick="delPerfil()">Retirar</button>
+                <button type="button" class="btn btn-info form-control" onclick="addPerfil()">Adicionar</button>
+
+                @Html.ListBox("outrosPerfis", new SelectList(ViewBag.OutrosPerfis, "Id", "Nome"), new { @class = "form-control", size = 5, style = "width:150px" })
+
+
             </div>
         </div>
-        <h1>TERMINA ISSO AQUI</h1>
-        
+
+
 
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="@ViewBag.Title" class="btn btn-success" />
+                <input type="submit" onmouseover="gambiSono()" value="Salvar" class="btn btn-success" />
             </div>
         </div>
     </div>
@@ -81,5 +90,31 @@
 </div>
 
 @section Scripts {
+    <script>
+
+        function addPerfil() {
+            var listPerfis = $('#perfisAdicionados');
+            var outrosPerfis = $('#outrosPerfis');
+            var sel = outrosPerfis.find(':selected');
+            sel.remove();
+            listPerfis.append(sel);
+        }
+
+        function delPerfil() {
+            var listPerfis = $('#perfisAdicionados');
+            var outrosPerfis = $('#outrosPerfis');
+            var sel = listPerfis.find(':selected');
+            sel.remove();
+            outrosPerfis.append(sel);
+
+        }
+
+        function gambiSono() {
+            console.log('teste');
+            $('#perfisAdicionados').find('option').prop('selected',true);
+        }
+
+    </script>
+
     @Scripts.Render("~/bundles/jqueryval")
 }

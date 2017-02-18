@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ProcessoSeletivo.Domain.Interfaces.Services;
 using ProcessoSeletivo.Application.ViewModel;
+using AutoMapper;
 
 namespace ProcessoSeletivo.Application.AppServices
 {
@@ -19,11 +20,13 @@ namespace ProcessoSeletivo.Application.AppServices
         public override void Update(UsuarioViewModel model)
         {
             var obj = service.GetById(model.Id);
+
             obj.Email = model.Email;
             obj.Ativo = model.Ativo;
             obj.Login = model.Login;
             obj.Nome = model.Nome;
             obj.Senha = model.Senha;
+            obj.Perfis = Mapper.Map<List<UsuarioPerfilViewModel>,List<UsuarioPerfil>>(model.Perfis);
 
             service.Update(obj);
         }

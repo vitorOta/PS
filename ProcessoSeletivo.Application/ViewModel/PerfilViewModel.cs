@@ -15,6 +15,17 @@ namespace ProcessoSeletivo.Application.ViewModel
 
         public bool Ativo { get; set; }
 
-        public List<UsuarioPerfilViewModel> Usuarios { get; set; }
+        //public virtual List<UsuarioPerfilViewModel> Usuarios { get; set; }
+
+        // override object.Equals
+        public override bool Equals(object obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+            {
+                return false;
+            }
+
+            return this.Id == ((PerfilViewModel)obj).Id;
+        }
     }
 }
