@@ -48,9 +48,33 @@ AS
 GO
 
 --------------------------------------------------------------------------------------------------------
-/*Procedure importar txt (considerando que o arquivo passado como parametro terá a mesma estrutura do ARQUIVO_IMPORTACAO_USUARIO.txt)*/
+/*Procedure exportar txt (o arquivo deve ter permissão de escrita !!!)*/
 CREATE PROCEDURE EXPORTAR_USUARIOS @path varchar(max)
 AS
 
--- PESQUISAR BCP
+EXEC sp_configure 'show advanced option',1
+reconfigure
+
+EXEC sp_configure 'xp_cmdshell',1
+reconfigure
+
+
+DECLARE @L VARCHAR(4);
+DECLARE @N VARCHAR(4);
+DECLARE @E VARCHAR(4);
+SELECT @L=MAX(LEN(LOGIN)) +1 , @N=MAX(LEN(NOME))+1 , @E=MAX(LEN(EMAIL))+1  FROM Usuario
+
+DECLARE @command VARCHAR(8000) = 'bcp "SELECT ''USUARIOS FRANQUIA'' AS x UNION ALL SELECT Login + REPLICATE('' '',' + @L  + '-LEN(LOGIN)) + Nome + REPLICATE('' '',' + @N +'-LEN(Nome)) + Email +REPLICATE('' '','+ @E +'-LEN(Email)) AS x FROM ProcessoDB.dbo.Usuario" queryout "'+ @path + '" -c -T'
+select @command
+EXEC xp_cmdshell @command
+
+
+EXEC sp_configure 'xp_cmdshell',0
+reconfigure
+
+EXEC sp_configure 'show advanced option',0
+reconfigure
+
+
+
 GO
