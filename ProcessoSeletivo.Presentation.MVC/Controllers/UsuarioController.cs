@@ -1,9 +1,9 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
 using ProcessoSeletivo.Application.ViewModel;
-using ProcessoSeletivo.Presentation.MVC.Util;
 using System;
 using System.Collections.Generic;
+using ProcessoSeletivo.Application.Util;
 
 namespace ProcessoSeletivo.Presentation.MVC.Controllers
 {
@@ -47,11 +47,11 @@ namespace ProcessoSeletivo.Presentation.MVC.Controllers
 
                 List<int> perfisAdicionados = Request.Form.Get("perfisAdicionados")?.Split(',').Select(s => int.Parse(s)).ToList();
 
+                obj.Perfis = new List<UsuarioPerfilViewModel>();
+
                 if (perfisAdicionados != null && perfisAdicionados.Count > 0)
                 {
-                    obj.Perfis = obj.Perfis ?? new List<UsuarioPerfilViewModel>();
-                    obj.Perfis.RemoveAll(p => !perfisAdicionados.Contains(p.PerfilId));
-                    perfisAdicionados.Except(obj.Perfis.Select(p => p.PerfilId)).ToList().ForEach(pa =>
+                    perfisAdicionados.ForEach(pa =>
                       {
                           var up = new UsuarioPerfilViewModel();
                           up.PerfilId = pa;
@@ -59,9 +59,6 @@ namespace ProcessoSeletivo.Presentation.MVC.Controllers
                           up.Ativo = true;
                           obj.Perfis.Add(up);
                       });
-                }else
-                {
-                    obj.Perfis = null;
                 }
 
                 if (obj.Id > 0)

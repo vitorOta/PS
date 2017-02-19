@@ -1,11 +1,5 @@
 ﻿using ProcessoSeletivo.Application.ViewModel;
-using RestSharp;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace ProcessoSeletivo.Presentation.WebForms.Perfil
 {
@@ -13,11 +7,10 @@ namespace ProcessoSeletivo.Presentation.WebForms.Perfil
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            var req = new RestRequest("{id}",Method.GET);
-            req.AddParameter("id", Request.QueryString["Id"]);
-            var resp = Index.client.Execute<PerfilViewModel>(req);
 
-            var perfil = resp.Data;
+            int id = int.Parse (Request.QueryString["Id"]);
+
+            var perfil = Index.consumer.GetById(id);
 
             if (perfil != null)
             {

@@ -64,8 +64,8 @@ DECLARE @N VARCHAR(4);
 DECLARE @E VARCHAR(4);
 SELECT @L=MAX(LEN(LOGIN)) +1 , @N=MAX(LEN(NOME))+1 , @E=MAX(LEN(EMAIL))+1  FROM Usuario
 
-DECLARE @command VARCHAR(8000) = 'bcp "SELECT ''USUARIOS FRANQUIA'' AS x UNION ALL SELECT Login + REPLICATE('' '',' + @L  + '-LEN(LOGIN)) + Nome + REPLICATE('' '',' + @N +'-LEN(Nome)) + Email +REPLICATE('' '','+ @E +'-LEN(Email)) AS x FROM ProcessoDB.dbo.Usuario" queryout "'+ @path + '" -c -T'
-select @command
+DECLARE @command VARCHAR(8000) = 'bcp "SELECT ''USUARIOS FRANQUIA'' AS x UNION ALL SELECT Login + REPLICATE('' '',' + @L  + '-LEN(LOGIN)) + Nome + REPLICATE('' '',' + @N +'-LEN(Nome)) + Email +REPLICATE('' '','+ @E +'-LEN(Email)) AS x FROM ProcessoDB.dbo.Usuario" queryout %temp%/ARQUIVO_IMPORTACAO_USUARIO.txt -c -T'
+--select @command
 EXEC xp_cmdshell @command
 
 

@@ -1,12 +1,9 @@
 ﻿using ProcessoSeletivo.Application.ViewModel;
 using RestSharp;
-using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Web;
 
-namespace ProcessoSeletivo.Presentation.MVC.Util
+namespace ProcessoSeletivo.Application.Util
 {
     public class RestConsumer<TViewModel> where TViewModel : ViewModelBase, new()
     {
@@ -58,6 +55,14 @@ namespace ProcessoSeletivo.Presentation.MVC.Util
             {
                 throw resp.ErrorException;
             }
+        }
+
+        public void Remove(int id)
+        {
+            var req = new RestRequest("{id}", Method.DELETE);
+
+            req.AddParameter("id", id);
+            var resp = client.Execute(req);
         }
 
 

@@ -1,6 +1,6 @@
 ﻿using ProcessoSeletivo.Application.ViewModel;
-using ProcessoSeletivo.Presentation.MVC.Util;
-using RestSharp;
+using ProcessoSeletivo.Application.Util;
+
 using System;
 using System.Collections.Generic;
 using System.Configuration;

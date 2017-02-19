@@ -38,7 +38,7 @@ namespace ProcessoSeletivo.Infrastructure.Repositories
             Db.SaveChanges();
         }
 
-        public void Update(TEntity entity)
+        public virtual void Update(TEntity entity)
         {
             Db.Entry(entity).State = EntityState.Modified;
             Db.SaveChanges();

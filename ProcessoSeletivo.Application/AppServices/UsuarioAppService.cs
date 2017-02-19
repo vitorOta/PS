@@ -26,7 +26,10 @@ namespace ProcessoSeletivo.Application.AppServices
             obj.Login = model.Login;
             obj.Nome = model.Nome;
             obj.Senha = model.Senha;
-            obj.Perfis = Mapper.Map<List<UsuarioPerfilViewModel>,List<UsuarioPerfil>>(model.Perfis);
+
+            obj.Perfis?.ToString(); //gg lazy load
+
+            obj.Perfis = Mapper.Map<List<UsuarioPerfilViewModel>, List<UsuarioPerfil>>(model.Perfis ?? new List<UsuarioPerfilViewModel>());
 
             service.Update(obj);
         }

@@ -1,5 +1,5 @@
-﻿using ProcessoSeletivo.Application.ViewModel;
-using RestSharp;
+﻿using ProcessoSeletivo.Application.Util;
+using ProcessoSeletivo.Application.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -8,12 +8,11 @@ namespace ProcessoSeletivo.Presentation.WebForms.Perfil
 {
     public partial class Index : System.Web.UI.Page
     {
-        public static readonly RestClient client = new RestClient(ConfigurationManager.AppSettings["WebServiceUrl"] + "Perfil");
+        public static readonly RestConsumer<PerfilViewModel> consumer = new RestConsumer<PerfilViewModel>();
         private void FillGrid()
         {
-            var req = new RestRequest("GetAll", Method.GET);
-            var resp = client.Execute<List<UsuarioViewModel>>(req);
-            GridView1.DataSource = resp.Data;
+            
+            GridView1.DataSource = consumer.GetAll();
             GridView1.DataBind();
         }
 
@@ -26,10 +25,8 @@ namespace ProcessoSeletivo.Presentation.WebForms.Perfil
         {
             var row = GridView1.Rows[e.RowIndex];
 
-            var req = new RestRequest("{id}",Method.DELETE);
-
-            req.AddParameter("id", row.Cells[0].Text);
-            var resp = client.Execute(req);
+            int id = int.Parse(row.Cells[0].Text);
+            consumer.Remove(id);
 
             FillGrid();
         }

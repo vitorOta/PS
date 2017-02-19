@@ -51,6 +51,11 @@
             <asp:Label ID="LblDtInclusao" runat="server"></asp:Label>
         </dd>
 
+
+        <dt>Perfis</dt>
+        <dd>
+            <asp:ListBox ID="ListPerfis" runat="server"></asp:ListBox></dd>
+
     </dl>
 
     <a class="btn btn-link" href="Index">Voltar</a>
