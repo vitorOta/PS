@@ -1,3 +1,6 @@
+/*Estou utilizando o EF CodeFirst para criar o banco, por isso, não é necessário executar esse script*/
+
+/*
 CREATE DATABASE ProcessoDB
 GO
 
@@ -45,3 +48,4 @@ CREATE TABLE USUARIO_PERFIL(
     CONSTRAINT pk_UsuarioPerfil PRIMARY KEY (ID_PERFIL, ID_USUARIO)
 )
 GO
+*/
