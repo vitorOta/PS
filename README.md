@@ -34,7 +34,7 @@ Para executar o projeto é necessário alterar algumas configurações nos arqui
 ##
 #### Scripts do Banco
 Os scripts do banco estão na pasta [scripts db](https://github.com/vitorOta/PS/tree/master/scripts%20db).
-1. Db, Tables and Index.sql (não é necessário a sua  execução, visto que o sistema utiliza o CodeFirst)
-2. Triggers and Procedures.sql
-3. Importação do txt.sql
-4. Query.sql
+* Db, Tables and Index.sql (não é necessário a sua  execução, visto que o sistema utiliza o CodeFirst)
+* Triggers and Procedures.sql
+* Importação do txt.sql
+* Query.sql
